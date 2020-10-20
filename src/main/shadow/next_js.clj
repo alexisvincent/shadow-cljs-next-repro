@@ -12,30 +12,30 @@
 (defn create-pages
   {:shadow.build/stage :flush}
   [state]
-  (doseq [ns-def (all-vars state)
-          :when (get-in ns-def [:meta :next/page])]
+  ;; (doseq [ns-def (all-vars state)
+  ;;         :when (get-in ns-def [:meta :next/page])]
 
-    (let [{:next/keys [page]}
-          (:meta ns-def)
+  ;;   (let [{:next/keys [page]}
+  ;;         (:meta ns-def)
 
-          page-ns
-          (-> ns-def :name namespace cljs-comp/munge)
+  ;;         page-ns
+  ;;         (-> ns-def :name namespace cljs-comp/munge)
 
-          page-var
-          (-> ns-def :name name cljs-comp/munge)
+  ;;         page-var
+  ;;         (-> ns-def :name name cljs-comp/munge)
 
-          ;; Y U NO DATA THIS!
-          content
-          (str
-            "\nexport {" page-var " as default} from \"../src/cljs/" page-ns ".js\";")
+  ;;         ;; Y U NO DATA THIS!
+  ;;         content
+  ;;         (str
+  ;;          "\nexport {" page-var " as default} from \"../dist/cljs/" page-ns ".js\";")
 
-          out-dir
-          (io/file "site" "pages")
+  ;;         out-dir
+  ;;         (io/file "pages")
 
-          out-file
-          (io/file out-dir (str page ".js"))]
+  ;;         out-file
+  ;;         (io/file out-dir (str page ".js"))]
 
-      (io/make-parents out-file)
-      (spit out-file content)
-      ))
+  ;;     (io/make-parents out-file)
+  ;;     (spit out-file content)
+  ;;     ))
   state)
