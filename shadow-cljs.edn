@@ -9,15 +9,8 @@
 
  :builds
  {:site {:target :npm-module
-         :output-dir "site/src/cljs"
-         :build-hooks [(shadow.next-js/create-pages)]
+         :output-dir "dist/module"
          :entries [demo.site]}
   :esm {:target :esm
-        :output-dir "dist/cljs"
-        :build-hooks [(shadow.next-js/create-pages)]
-        :modules {:index {:exports {page_index demo.site/page-index}}}}
-  :browser {:target :browser
-            :output-dir "dist/cljs"
-            :asset-path "/assets/js"
-            ;; :build-hooks [(shadow.next-js/create-pages)]
-            :modules {:browser {:entries [demo.site]}}}}}
+        :output-dir "dist/esm"
+        :modules {:index {:exports {index demo.site/index}}}}}}
